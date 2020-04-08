@@ -50,3 +50,12 @@ class AvitoRealEstateItem(scrapy.Item):
     room_count = scrapy.Field(output_processor=TakeFirst())
     total_area = scrapy.Field(output_processor=TakeFirst())
     kitchen_area = scrapy.Field(output_processor=TakeFirst())
+
+
+class ZillowItem(scrapy.Item):
+    _id = scrapy.Field()
+    url = scrapy.Field(output_processor=TakeFirst())
+    adress = scrapy.Field(output_processor=TakeFirst())
+    price = scrapy.Field(output_processor=TakeFirst())
+    sqft = scrapy.Field()
+    photos = scrapy.Field()

@@ -13,18 +13,12 @@ import datetime
 class AvitoparsePipeline(object):
     def __init__(self):
         client = MongoClient('mongodb://localhost:27017/')
-        self.db = client['instagram']
+        self.db = client['zillow']
 
     def process_item(self, item, spider):
-        collection = self.db['followers']
-        collection_2 = self.db['followings']
-        collection_3 = self.db['posts']
-        if 'followers' in item: # наверное можно сделать как то более аккуратно...
-            collection.insert_one(item)
-        if 'followings' in item:
-            collection_2.insert_one(item)
-        if 'posts' in item:
-            collection_3.insert_one(item)
+        collection = self.db[spider.name]
+        collection.insert_one(item)
+
         return item
 
 
